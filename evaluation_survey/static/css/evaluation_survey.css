@@ -1,0 +1,9 @@
+/* CSS for EvaluationSurveyXBlock */
+
+.evaluation_survey_block .count {
+    font-weight: bold;
+}
+
+.evaluation_survey_block p {
+    cursor: pointer;
+}
