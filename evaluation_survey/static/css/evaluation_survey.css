@@ -7,3 +7,7 @@
 .evaluation_survey_block p {
     cursor: pointer;
 }
+
+.evaluation_survey_block .d-none {
+    display: none;
+}

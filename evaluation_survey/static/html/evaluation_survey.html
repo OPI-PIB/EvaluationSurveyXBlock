@@ -1,5 +1,17 @@
+{% load i18n %}
+
 <div class="evaluation_survey_block">
-<p>EvaluationSurveyXBlock: count is now
-    <span class='count'>{self.count}</span> (click me to increment).
-</p>
+    <iframe
+        id="survey-iframe"
+        class="d-none"
+        title="Inline Frame Example"
+        src=""
+        data-course_id="{{course_id}}"
+        data-survey-domain="{{survey_microfrontend_url}}"
+        style="width: 100%; height: 50px"
+        frameborder="0"
+        scrolling="no"
+    >
+    </iframe>
+    <p class="survey-not-connected d-none">{% trans 'You need to connect the survey to the course' %}</p>
 </div>
