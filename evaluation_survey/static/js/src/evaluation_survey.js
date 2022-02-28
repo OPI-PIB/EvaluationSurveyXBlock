@@ -1,28 +1,51 @@
 /* Javascript for EvaluationSurveyXBlock. */
 function EvaluationSurveyXBlock(runtime, element) {
-
-    function updateCount(result) {
-        $('.count', element).text(result.count);
+    const self = this;
+    var surveyId;
+    this.init = () => {
+        this.getIframe();
+    }
+    this.getIframe = () => {
+        $.ajax({
+            type: 'GET',
+            url: '/api/survey/v1/polls/?course=' + encodeURIComponent(course_id),
+            headers: {
+                'X-CSRFToken': $.cookie('csrftoken')
+            },
+            success: addIframe
+        });
     }
 
-    var handlerUrl = runtime.handlerUrl(element, 'increment_count');
+    this.initEvents = () => {
+        window.addEventListener("message", (event) => {
+            if (event.origin !== "http://example.org:8080")
+                if (event.data.message) {
+                    $('#survey-iframe').height(event.data.message);
+                }
+            return;
 
-    $('p', element).click(function(eventObject) {
-        $.ajax({
-            type: "POST",
-            url: handlerUrl,
-            data: JSON.stringify({"hello": "world"}),
-            success: updateCount
-        });
-    });
+        }, false);
+    }
+
+    function addIframe(payload) {
+
+        function getPollUrl(surveyId) {
+            return survey_domain + 'poll/' + surveyId
+        }
+
+        if (payload.results[0]) {
+            surveyId = payload.results[0].id;
+            $('#survey-iframe').attr({ src: getPollUrl(surveyId) });
+            $('#survey-iframe', element).removeClass('d-none');
+        } else {
+            $('.survey-not-connected', element).removeClass('d-none');
+        }
+    }
+    var course_id = $('#survey-iframe').data("course_id");
+    var survey_domain = $('#survey-iframe').data("survey-domain");
 
     $(function ($) {
-        /*
-        Use `gettext` provided by django-statici18n for static translations
-
-        var gettext = EvaluationSurveyXBlocki18n.gettext;
-        */
-
-        /* Here's where you'd do things on page load. */
+        self.init();
+        self.initEvents();
     });
 }

@@ -16,10 +16,16 @@ INSTALLED_APPS = (
     'evaluation_survey',
 )
 
+LANGUAGES = [
+    ('en', 'English - Source Language'),
+    ('en_US', 'English'),
+    ('pl', 'Polski'),
+]
+
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
@@ -40,7 +46,8 @@ STATIC_URL = '/static/'
 
 STATICI18N_DOMAIN = 'text'
 STATICI18N_PACKAGES = (
-    'evaluation_survey.translations',
+    'evaluation_survey',
 )
-STATICI18N_ROOT = 'evaluation_survey/public/js'
+STATICI18N_ROOT = 'evaluation_survey/static/js'
 STATICI18N_OUTPUT_DIR = 'translations'
+STATICI18N_NAMESPACE = 'EvaluationSurveyXBlocki18n'

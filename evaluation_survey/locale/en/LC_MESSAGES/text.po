@@ -1,0 +1,86 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-13 19:51+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: evaluation_survey.py:30 evaluation_survey.py:37 evaluation_survey.py:44
+msgid "Display Name"
+msgstr ""
+
+#: evaluation_survey.py:31
+msgid "Evaluation Survey"
+msgstr ""
+
+#: evaluation_survey.py:33 evaluation_survey.py:40 evaluation_survey.py:47
+msgid "This name appears in the horizontal navigation at the top of the page"
+msgstr ""
+
+#: evaluation_survey.py:164
+msgid "Dummy"
+msgstr ""
+
+#: static/html/evaluation_survey_edit.html:8
+msgid "Evaluation survey template"
+msgstr ""
+
+#: static/html/evaluation_survey_edit.html:10
+msgid "Tralalala"
+msgstr ""
+
+#: static/html/evaluation_survey_edit.html:14
+msgid "Choose survey who want connect to the course"
+msgstr ""
+
+#: static/html/evaluation_survey_edit.html:18
+msgid ""
+"You need to choose template and click \"Connect to course\" to do copy of "
+"template and connect to the course"
+msgstr ""
+
+#: static/html/evaluation_survey_edit.html:21
+msgid "Connect to course"
+msgstr ""
+
+#: static/html/evaluation_survey_edit.html:26
+msgid ""
+"The survey is connected to the course. If you want to choose a different "
+"template for the survey, you need to click \"Change template\". You need to "
+"remember that if you do it, that all results will pernamently dissapeared."
+msgstr ""
+
+#: static/html/evaluation_survey_edit.html:30
+msgid "Change template"
+msgstr ""
+
+#: static/html/evaluation_survey_edit.html:39
+msgid "Save"
+msgstr ""
+
+#: static/html/evaluation_survey_edit.html:42
+msgid "Close"
+msgstr ""
+
+#: static/js/src/evaluation_survey_edit.js:134
+msgid "Forbidden"
+msgstr ""
+
+#: static/js/src/evaluation_survey_edit.js:134
+msgid ""
+"You need to have GlobalStaff permission to do this action. Please contact "
+"with ..."
+msgstr ""
