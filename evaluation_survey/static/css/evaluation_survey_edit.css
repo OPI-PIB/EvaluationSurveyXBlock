@@ -297,3 +297,15 @@ input[type="number"] {
     /* border-color: red; */
     color: red;
 }
+
+
+.confirm-delete-container label {
+    font-size: large;
+    color: red;
+
+}
+
+.confirm-update-container label {
+    font-size: large;
+    color: red;
+}
