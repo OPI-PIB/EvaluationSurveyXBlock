@@ -185,7 +185,7 @@ function EvaluationSurveyXBlockEdit(runtime, element) {
                 if (XMLHttpRequest.statusText === "Forbidden") {
                     runtime.notify('error', {
                         title: EvaluationSurveyXBlocki18n.gettext("Forbidden"),
-                        msg: EvaluationSurveyXBlocki18n.gettext("You need to have GlobalStaff permission. To do this action. Please contact with ...")
+                        msg: XMLHttpRequest.responseJSON && XMLHttpRequest.responseJSON.details
                     })
                 }
             }
