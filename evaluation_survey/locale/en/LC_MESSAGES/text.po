@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-13 19:51+0100\n"
+"POT-Creation-Date: 2022-03-18 16:22+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,69 +18,87 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: evaluation_survey.py:30 evaluation_survey.py:37 evaluation_survey.py:44
+#: evaluation_survey.py:26 evaluation_survey.py:33 evaluation_survey.py:40
 msgid "Display Name"
 msgstr ""
 
-#: evaluation_survey.py:31
+#: evaluation_survey.py:27
 msgid "Evaluation Survey"
 msgstr ""
 
-#: evaluation_survey.py:33 evaluation_survey.py:40 evaluation_survey.py:47
+#: evaluation_survey.py:29
 msgid "This name appears in the horizontal navigation at the top of the page"
 msgstr ""
 
-#: evaluation_survey.py:164
+#: evaluation_survey.py:36
+msgid "This is id of the template"
+msgstr ""
+
+#: evaluation_survey.py:43
+msgid "This is a id of survey"
+msgstr ""
+
+#: evaluation_survey.py:169
 msgid "Dummy"
 msgstr ""
 
-#: static/html/evaluation_survey_edit.html:8
+#: static/html/evaluation_survey.html:16
+msgid "You need to connect the survey to the course"
+msgstr ""
+
+#: static/html/evaluation_survey_edit.html:9
 msgid "Evaluation survey template"
 msgstr ""
 
-#: static/html/evaluation_survey_edit.html:10
-msgid "Tralalala"
+#: static/html/evaluation_survey_edit.html:17
+msgid "None"
 msgstr ""
 
-#: static/html/evaluation_survey_edit.html:14
-msgid "Choose survey who want connect to the course"
+#: static/html/evaluation_survey_edit.html:20
+msgid "Select the survey you want to link to your course"
 msgstr ""
 
-#: static/html/evaluation_survey_edit.html:18
-msgid ""
-"You need to choose template and click \"Connect to course\" to do copy of "
-"template and connect to the course"
-msgstr ""
-
-#: static/html/evaluation_survey_edit.html:21
-msgid "Connect to course"
-msgstr ""
-
-#: static/html/evaluation_survey_edit.html:26
+#: static/html/evaluation_survey_edit.html:25
 msgid ""
 "The survey is connected to the course. If you want to choose a different "
 "template for the survey, you need to click \"Change template\". You need to "
 "remember that if you do it, that all results will pernamently dissapeared."
 msgstr ""
 
-#: static/html/evaluation_survey_edit.html:30
+#: static/html/evaluation_survey_edit.html:28
 msgid "Change template"
 msgstr ""
 
-#: static/html/evaluation_survey_edit.html:39
+#: static/html/evaluation_survey_edit.html:32
+msgid ""
+"By clicking \"Save\" button you confirm the removal of the survey. This "
+"action will permanently delete all results."
+msgstr ""
+
+#: static/html/evaluation_survey_edit.html:37
+msgid ""
+"By clicking \"Save\" button you confirm the replacement or update of the "
+"survey. This action will permanently delete all results."
+msgstr ""
+
+#: static/html/evaluation_survey_edit.html:47
 msgid "Save"
 msgstr ""
 
-#: static/html/evaluation_survey_edit.html:42
+#: static/html/evaluation_survey_edit.html:50
+msgid "Cancel"
+msgstr ""
+
+#: static/html/evaluation_survey_edit.html:55
 msgid "Close"
 msgstr ""
 
-#: static/js/src/evaluation_survey_edit.js:134
+#: static/js/src/evaluation_survey_edit.js:187
 msgid "Forbidden"
 msgstr ""
 
-#: static/js/src/evaluation_survey_edit.js:134
+#: static/js/src/evaluation_survey_edit.js:188
 msgid ""
-"You need to have GlobalStaff permission to do this action. Please contact "
+"You need to have GlobalStaff permission. To do this action. Please contact "
 "with ..."
 msgstr ""

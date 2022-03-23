@@ -1,6 +1,17 @@
 /* Javascript for EvaluationSurveyXBlock. */
 function EvaluationSurveyXBlockEdit(runtime, element) {
     const self = this;
+
+    const STATUS_ENUM = Object.freeze({
+        NONE: '',
+        SETTED: 'SETTED',
+        PTD: 'PREPARED_TO_DISCONNECT',
+        CONNECTED: 'CONNECTED'
+    });
+    const SELECT_ENUM = Object.freeze({
+        NONE: '',
+        CHANGED: 'CHANGED',
+    });
     this.init = () => {
         this.selectTemplates = $('select.templates', element);
         this.actionCancelButton = $('.action-cancel', element);
@@ -9,17 +20,20 @@ function EvaluationSurveyXBlockEdit(runtime, element) {
         this.actionDisconnectButton = $('.survey-action.action-disconnect', element);
         this.actionConnectButtonContainer = $('.action-connect-container', element);
         this.actionDisconnectButtonContainer = $('.action-disconnect-container', element);
+        this.confirmDeleteContainer = $('.confirm-delete-container', element);
+        this.confirmUpdateContainer = $('.confirm-update-container', element);
         this.settingsMainContainer = $('.evaluation-survey-main-settings', element)
         this.course_id = this.settingsMainContainer.data('course_id');
         this.surveyIdField = this.settingsMainContainer.data('survey_id');
         this.actionCancelButton.bind('click', this.onCancel);
-        this.actionSaveButton.bind('click', this.onSubmit);
-        this.actionConnectButton.bind('click', this.onConnect);
-        this.actionDisconnectButton.bind('click', this.onDisconnect);
+        this.actionSaveButton.bind('click', this.preConnect);
+        this.selectTemplates.bind('change', this.preSelect);
+        this.actionDisconnectButton.bind('click', this.preDisconnect);
         this.submitHandlerUrl = runtime.handlerUrl(element, 'studio_submit');
         this.removeHandlerUrl = runtime.handlerUrl(element, 'studio_remove');
         this.surveyId = false;
         this.getTemplatesIds();
+        this.state = { status: { main: STATUS_ENUM.NONE, select: SELECT_ENUM.NONE }, selectValue: this.selectTemplates.val() };
     }
 
     this.getTemplatesIds = () => {
@@ -40,6 +54,17 @@ function EvaluationSurveyXBlockEdit(runtime, element) {
                     $('select.templates', element).append(`<option value=${el.id} ${selected === el.id ? 'selected' : ''}>${el.published_version.name}</option>`)
                 }
             });
+            this.state.status.select = STATUS_ENUM.SETTED;
+            this.state.selectValue = this.selectTemplates.val();
+        }
+    }
+
+    this.editVisibilityOfConfirmElements = (element, flag) => {
+        if (flag) {
+            element.removeClass('d-none');
+        }
+        else {
+            element.addClass('d-none');
         }
     }
 
@@ -74,14 +99,44 @@ function EvaluationSurveyXBlockEdit(runtime, element) {
             if (payload.results[0]) {
                 self.surveyId = payload.results[0].id
                 self.editVisibility(false);
+                self.state.status.main = STATUS_ENUM.CONNECTED;
             } else {
                 self.editVisibility(true);
             }
         }
 
     }
+
+    this.preConnect = () => {
+        if (self.state.status.main === STATUS_ENUM.NONE && self.state.status.select === SELECT_ENUM.CHANGED) {
+            self.onConnect();
+        }
+        if (self.state.status.main === STATUS_ENUM.PTD && self.state.status.select === SELECT_ENUM.NONE) {
+            self.onDisconnect();
+        }
+        if (self.state.status.main === STATUS_ENUM.PTD && self.state.status.select === SELECT_ENUM.CHANGED) {
+            self.onDisconnect().done(() => { self.onConnect() });
+        }
+    }
+
+    this.preDisconnect = () => {
+        self.editVisibility(true);
+        self.selectTemplates.val("");
+        self.state.status.main = STATUS_ENUM.PTD;
+        self.state.status.select = SELECT_ENUM.NONE
+        self.editVisibilityOfConfirmElements(self.confirmUpdateContainer , false);
+        self.editVisibilityOfConfirmElements(self.confirmDeleteContainer , true);
+    }
+
+    this.preSelect = (ev) => {
+        self.state.status.select = SELECT_ENUM.CHANGED;
+        self.state.selectValue = ev.target.value;
+        self.editVisibilityOfConfirmElements(self.confirmDeleteContainer , false);
+        self.editVisibilityOfConfirmElements(self.confirmUpdateContainer , true);
+    }
+
     this.onConnect = function () {
-        const templateId = self.selectTemplates.val();
+        const templateId = self.state.selectValue;
         var dataToSend = { 'template_id': templateId };
         const apiPayload = { 'course_id': self.course_id };
         if (templateId) {
@@ -111,36 +166,30 @@ function EvaluationSurveyXBlockEdit(runtime, element) {
     }
 
     this.onDisconnect = function () {
-        var dataToSend = { 'template_id': '', 'survey_id': '' };
-        if (dataToSend) {
-            const surveyId = self.surveyId ? self.surveyId : self.surveyIdField;
-            if (surveyId !== "None") {
+        const surveyId = self.surveyId ? self.surveyId : self.surveyIdField;
+        return $.ajax({
+            type: 'DELETE',
+            global: false,
+            url: '/api/survey/v1/surveys/' + surveyId + '/',
+            success: () => {
                 $.ajax({
-                    type: 'DELETE',
-                    global: false,
-                    url: '/api/survey/v1/surveys/' + surveyId + '/',
+                    type: 'POST',
+                    url: self.removeHandlerUrl,
+                    data: JSON.stringify({ 'template_id': '', 'survey_id': '' }),
                     success: () => {
-                        $.ajax({
-                            type: 'POST',
-                            url: self.removeHandlerUrl,
-                            data: JSON.stringify(dataToSend),
-                            success: () => {
-                                self.editVisibility(true);
-                                self.selectTemplates.val("");
-                            },
-                        });
+                        runtime.notify('save', { state: 'end' });
                     },
-                    error: (XMLHttpRequest) => {
-                        if (XMLHttpRequest.statusText === "Forbidden") {
-                            runtime.notify('error', {
-                                title: EvaluationSurveyXBlocki18n.gettext("Forbidden"),
-                                msg: EvaluationSurveyXBlocki18n.gettext("You need to have GlobalStaff permission. To do this action. Please contact with ...")
-                            })
-                        }
-                    }
-                })
+                });
+            },
+            error: (XMLHttpRequest) => {
+                if (XMLHttpRequest.statusText === "Forbidden") {
+                    runtime.notify('error', {
+                        title: EvaluationSurveyXBlocki18n.gettext("Forbidden"),
+                        msg: XMLHttpRequest.responseJSON && XMLHttpRequest.responseJSON.details
+                    })
+                }
             }
-        }
+        })
     }
 
 

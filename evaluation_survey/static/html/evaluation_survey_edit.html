@@ -11,7 +11,7 @@
                     <select
                         class="input setting-input templates"
                         id="embedded_answers_edit_survey"
-                        name="{% trans 'Tralalala' %}"
+                        name="Template Select"
                         data-template_id="{{template_id}}"
                     >
                         <option value="">{% trans "None" %}</option>
@@ -26,6 +26,16 @@
                     </label>
                     <br />
                     <button class="survey-action action-disconnect danger">{% trans 'Change template' %}</button>
+                </div>
+                <div class="confirm-delete-container d-none">
+                    <label>
+                        {% trans 'By clicking "Save" button you confirm the removal of the survey. This action will permanently delete all results.' %}
+                    </label>
+                </div>
+                <div class="confirm-update-container d-none">
+                    <label>
+                        {% trans 'By clicking "Save" button you confirm the replacement or update of the survey. This action will permanently delete all results.' %}
+                    </label>
                 </div>
             </li>
         </div>
