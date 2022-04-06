@@ -131,8 +131,10 @@ function EvaluationSurveyXBlockEdit(runtime, element) {
     this.preSelect = (ev) => {
         self.state.status.select = SELECT_ENUM.CHANGED;
         self.state.selectValue = ev.target.value;
-        self.editVisibilityOfConfirmElements(self.confirmDeleteContainer , false);
-        self.editVisibilityOfConfirmElements(self.confirmUpdateContainer , true);
+        if (self.surveyId) {
+            self.editVisibilityOfConfirmElements(self.confirmDeleteContainer , false);
+            self.editVisibilityOfConfirmElements(self.confirmUpdateContainer , true);
+        }
     }
 
     this.onConnect = function () {
@@ -182,7 +184,7 @@ function EvaluationSurveyXBlockEdit(runtime, element) {
                 });
             },
             error: (XMLHttpRequest) => {
-                if (XMLHttpRequest.statusText === "Forbidden") {
+                if (XMLHttpRequest.status === 403) {
                     runtime.notify('error', {
                         title: EvaluationSurveyXBlocki18n.gettext("Forbidden"),
                         msg: XMLHttpRequest.responseJSON && XMLHttpRequest.responseJSON.details
