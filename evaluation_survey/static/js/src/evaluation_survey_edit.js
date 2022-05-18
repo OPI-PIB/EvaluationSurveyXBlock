@@ -100,6 +100,7 @@ function EvaluationSurveyXBlockEdit(runtime, element) {
                 self.surveyId = payload.results[0].id
                 self.editVisibility(false);
                 self.state.status.main = STATUS_ENUM.CONNECTED;
+                $("#embedded_answers_edit_survey").children().filter((i,el)=>{return el.innerHTML===payload.results[0].name}).prop("selected", true)
             } else {
                 self.editVisibility(true);
             }
