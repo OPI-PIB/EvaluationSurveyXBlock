@@ -57,6 +57,7 @@ function EvaluationSurveyXBlockEdit(runtime, element) {
             this.state.status.select = STATUS_ENUM.SETTED;
             this.state.selectValue = this.selectTemplates.val();
         }
+        self.findSurveyId();
     }
 
     this.editVisibilityOfConfirmElements = (element, flag) => {
@@ -100,6 +101,9 @@ function EvaluationSurveyXBlockEdit(runtime, element) {
                 self.surveyId = payload.results[0].id
                 self.editVisibility(false);
                 self.state.status.main = STATUS_ENUM.CONNECTED;
+                if($("#embedded_answers_edit_survey option:selected").text() !== payload.results[0].name){
+                    $("#embedded_answers_edit_survey option:contains("+ payload.results[0].name +")").prop("selected", true);
+                }
             } else {
                 self.editVisibility(true);
             }
@@ -197,6 +201,5 @@ function EvaluationSurveyXBlockEdit(runtime, element) {
 
     $(function ($) {
         self.init();
-        self.findSurveyId();
     });
 }
