@@ -1,0 +1,115 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Emilia Dolega <emilia.dolega@opi.org.pl>, 2022
+# krystianlygas <krystian.lygas@gmail.com>, 2022
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-18 16:22+0100\n"
+"PO-Revision-Date: 2022-03-18 15:11+0000\n"
+"Last-Translator: krystianlygas <krystian.lygas@gmail.com>, 2022\n"
+"Language-Team: Polish (https://www.transifex.com/navoica/teams/104253/pl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: evaluation_survey.py:26 evaluation_survey.py:33 evaluation_survey.py:40
+msgid "Display Name"
+msgstr "Nazwa wyświetlana"
+
+#: evaluation_survey.py:27
+msgid "Evaluation Survey"
+msgstr "Ankieta ewaluacyjna"
+
+#: evaluation_survey.py:29
+msgid "This name appears in the horizontal navigation at the top of the page"
+msgstr "Ta nazwa pojawia się w nawigacji na górze strony"
+
+#: evaluation_survey.py:36
+msgid "This is id of the template"
+msgstr "Identyfikator szablonu ankiety"
+
+#: evaluation_survey.py:43
+msgid "This is a id of survey"
+msgstr "Identyfikator ankiety"
+
+#: evaluation_survey.py:169
+msgid "Dummy"
+msgstr "Lorem ipsum"
+
+#: static/html/evaluation_survey.html:16
+msgid "You need to connect the survey to the course"
+msgstr "Musisz połączyć ankietę z kursem"
+
+#: static/html/evaluation_survey_edit.html:9
+msgid "Evaluation survey template"
+msgstr "Szablon ankiety ewaluacyjnej"
+
+#: static/html/evaluation_survey_edit.html:17
+msgid "None"
+msgstr "Brak"
+
+#: static/html/evaluation_survey_edit.html:20
+msgid "Select the survey you want to link to your course"
+msgstr "Wybierz ankietę, którą chcesz połączyć z kursem"
+
+#: static/html/evaluation_survey_edit.html:25
+msgid ""
+"The survey is connected to the course. If you want to choose a different "
+"template for the survey, you need to click \"Change template\". You need to "
+"remember that if you do it, that all results will pernamently dissapeared."
+msgstr ""
+"Ankieta jest połączona z kursem. Jeśli chcesz wybrać inny szablon ankiety, "
+"musisz kliknąć „Zmień szablon”. Musisz pamiętać, że jeśli to zrobisz, "
+"wszystkie wyniki zostaną utracone."
+
+#: static/html/evaluation_survey_edit.html:28
+msgid "Change template"
+msgstr "Zmień szablon"
+
+#: static/html/evaluation_survey_edit.html:32
+msgid ""
+"By clicking \"Save\" button you confirm the removal of the survey. This "
+"action will permanently delete all results."
+msgstr ""
+"Klikając przycisk „Zapisz” potwierdzasz usunięcie ankiety. Ta czynność "
+"spowoduje trwałe usunięcie wszystkich wyników."
+
+#: static/html/evaluation_survey_edit.html:37
+msgid ""
+"By clicking \"Save\" button you confirm the replacement or update of the "
+"survey. This action will permanently delete all results."
+msgstr ""
+"Klikając przycisk „Zapisz” potwierdzasz zamianę lub aktualizację ankiety. Ta"
+" czynność spowoduje trwałe usunięcie wszystkich wyników."
+
+#: static/html/evaluation_survey_edit.html:47
+msgid "Save"
+msgstr "Zapisz"
+
+#: static/html/evaluation_survey_edit.html:50
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: static/html/evaluation_survey_edit.html:55
+msgid "Close"
+msgstr "Zamknij"
+
+#: static/js/src/evaluation_survey_edit.js:187
+msgid "Forbidden"
+msgstr "Forbidden"
+
+#: static/js/src/evaluation_survey_edit.js:188
+msgid ""
+"You need to have GlobalStaff permission. To do this action. Please contact "
+"with ..."
+msgstr ""

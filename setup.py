@@ -143,7 +143,7 @@ setup(
     ],
     entry_points={
         'xblock.v1': [
-            'esxblock = evaluation_survey:EvaluationSurveyXBlock',
+            'evaluation-survey = evaluation_survey:EvaluationSurveyXBlock',
         ]
     },
     package_data=package_data("evaluation_survey", ["static", "public"]),

@@ -1,0 +1,60 @@
+{% load i18n %}
+
+<div class="wrapper-comp-settings editor-with-buttons is-active evaluation-survey-block" id="settings-tab">
+    <ul class="list-input settings-list">
+        <div class="evaluation-survey-main-settings" data-course_id="{{course_id}}" data-survey_id="{{survey_id}}">
+            <li class="field comp-setting-entry">
+                <div class="wrapper-comp-setting">
+                    <label class="label setting-label" for="embedded_answers_edit_survey"
+                        >{% trans "Evaluation survey template" %}</label
+                    >
+                    <select
+                        class="input setting-input templates"
+                        id="embedded_answers_edit_survey"
+                        name="Template Select"
+                        data-template_id="{{template_id}}"
+                    >
+                        <option value="">{% trans "None" %}</option>
+                    </select>
+                </div>
+                <span class="tip setting-help">{% trans 'Select the survey you want to link to your course' %}</span>
+            </li>
+            <li class="field comp-setting-entry">
+                <div class="action-disconnect-container {% if not template_id %}d-none{% endif %}">
+                    <label>
+                        {% trans 'The survey is connected to the course. If you want to choose a different template for the survey, you need to click "Change template". You need to remember that if you do it, that all results will pernamently dissapeared.' %}
+                    </label>
+                    <br />
+                    <button class="survey-action action-disconnect danger">{% trans 'Change template' %}</button>
+                </div>
+                <div class="confirm-delete-container d-none">
+                    <label>
+                        {% trans 'By clicking "Save" button you confirm the removal of the survey. This action will permanently delete all results.' %}
+                    </label>
+                </div>
+                <div class="confirm-update-container d-none">
+                    <label>
+                        {% trans 'By clicking "Save" button you confirm the replacement or update of the survey. This action will permanently delete all results.' %}
+                    </label>
+                </div>
+            </li>
+        </div>
+    </ul>
+    <div class="xblock-actions">
+        <ul>
+            <div class="action-connect-container d-none">
+                <li class="action-item">
+                    <a href="#" class="button action-primary action-save action-connect">{% trans "Save" %}</a>
+                </li>
+                <li class="action-item">
+                    <a href="#" class="button action-cancel">{% trans "Cancel" %}</a>
+                </li>
+            </div>
+            <div class="action-disconnect-container">
+                <li class="action-item">
+                    <a href="#" class="button action-cancel">{% trans "Close" %}</a>
+                </li>
+            </div>
+        </ul>
+    </div>
+</div>
