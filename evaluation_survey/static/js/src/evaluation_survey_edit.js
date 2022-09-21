@@ -51,12 +51,13 @@ function EvaluationSurveyXBlockEdit(runtime, element) {
         if (payload.results) {
             payload.results.forEach(el => {
                 if (el.published_version) {
-                    $('select.templates', element).append(`<option value=${el.id} ${selected === el.id ? 'selected' : ''}>${el.published_version.name}</option>`)
+                    $('select.templates', element).append(`<option value=${el.id}>${el.published_version.name}</option>`)
                 }
             });
             this.state.status.select = STATUS_ENUM.SETTED;
             this.state.selectValue = this.selectTemplates.val();
         }
+        $("#embedded_answers_edit_survey option:first").prop("selected", true);
         self.findSurveyId();
     }
 
